@@ -1,0 +1,20 @@
+services:
+  - type: web
+    name: portfolio-django
+    env: python
+    buildCommand: |
+      pip install -r requirements.txt
+      python manage.py collectstatic --noinput
+      python manage.py migrate
+    startCommand: gunicorn portfolio.wsgi:application
+    envVars:
+      - key: DJANGO_SETTINGS_MODULE
+        value: portfolio.settings
+      - key: DEBUG
+        value: "False"
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: portfolio-db
+          property: connectionString
