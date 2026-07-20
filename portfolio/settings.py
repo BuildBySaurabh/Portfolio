@@ -43,7 +43,7 @@ ALLOWED_HOSTS = [
 ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'https://portfolio-djez.onrender.com',
+    'https://portfolio-j3ox.onrender.com',
 ]
 
 
