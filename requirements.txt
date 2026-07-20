@@ -1,17 +1,9 @@
 Django==4.2.26
 psycopg2-binary==2.9.12
 Pillow==10.4.0
-<<<<<<< HEAD
-cloudinary==1.45.0
-=======
 cloudinary==1.44.1
->>>>>>> 546c538 (fix requirements)
 django-cloudinary-storage==0.3.0
 python-dotenv==1.0.1
 gunicorn==23.0.0
 whitenoise==6.7.0
-<<<<<<< HEAD
 dj-database-url==2.2.0
-=======
-dj-database-url==2.2.0
->>>>>>> 546c538 (fix requirements)
