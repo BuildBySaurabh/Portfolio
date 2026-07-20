@@ -115,7 +115,7 @@ DATABASES = {
         ssl_require=not DEBUG
     )
 }
-
+print("DATABASE_URL =", os.getenv("DATABASE_URL"))
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.postgresql',
