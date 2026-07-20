@@ -37,7 +37,7 @@ DEBUG = os.getenv("DEBUG", "True") == "True"
 MEDIA_URL = '/media/'
 
 ALLOWED_HOSTS = [
-    'https://portfolio-j3ox.onrender.com',
+    'portfolio-j3ox.onrender.com',
     'localhost',
     '127.0.0.1',
 ]
