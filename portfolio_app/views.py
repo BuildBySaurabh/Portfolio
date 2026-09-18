@@ -49,42 +49,6 @@ def project_detail(request, id):
 
 
 
-# def add_project(request):
-#     if request.method == "POST":
-#         project_form = ProjectForm(request.POST, request.FILES)
-
-#         if project_form.is_valid():
-#             project_obj = project_form.save()
-
-#             images = request.FILES.getlist('project_profile')
-#             for img in images:
-#                 ProjectImage.objects.create(project=project_obj, image=img)
-
-#             features = request.POST.getlist('feature_text')
-#             for f in features:
-#                 if f.strip():
-#                     Feature.objects.create(project=project_obj, text=f)
-
-#             tech_names = request.POST.getlist('tech_name')
-#             tech_icons = request.FILES.getlist('tech_icon')
-
-#             for name, icon in zip(tech_names, tech_icons):
-#                 if name.strip():
-#                     TechIcon.objects.create(project=project_obj, tech_name=name, icon=icon)
-
-#             tech_used_list = request.POST.getlist('tech_used')
-#             for t in tech_used_list:
-#                 if t.strip():
-#                     TechUsed.objects.create(project=project_obj, name=t)
-
-#             return redirect('home')
-
-#     else:
-#         project_form = ProjectForm()
-
-#     return render(request, 'portfolio_app/add_project.html', {
-#         'project_form': project_form,
-#     })
 def add_project(request):
     if request.method == "POST":
         project_form = ProjectForm(request.POST, request.FILES)
@@ -93,44 +57,25 @@ def add_project(request):
             project_obj = project_form.save()
 
             images = request.FILES.getlist('project_profile')
-
-            print("PROJECT IMAGES RECEIVED:", len(images))
-            print("FILES:", request.FILES)
-
             for img in images:
-                print("UPLOADING IMAGE:", img.name)
-
-                ProjectImage.objects.create(
-                    project=project_obj,
-                    image=img
-                )
+                ProjectImage.objects.create(project=project_obj, image=img)
 
             features = request.POST.getlist('feature_text')
             for f in features:
                 if f.strip():
-                    Feature.objects.create(
-                        project=project_obj,
-                        text=f
-                    )
+                    Feature.objects.create(project=project_obj, text=f)
 
             tech_names = request.POST.getlist('tech_name')
             tech_icons = request.FILES.getlist('tech_icon')
 
             for name, icon in zip(tech_names, tech_icons):
                 if name.strip():
-                    TechIcon.objects.create(
-                        project=project_obj,
-                        tech_name=name,
-                        icon=icon
-                    )
+                    TechIcon.objects.create(project=project_obj, tech_name=name, icon=icon)
 
             tech_used_list = request.POST.getlist('tech_used')
             for t in tech_used_list:
                 if t.strip():
-                    TechUsed.objects.create(
-                        project=project_obj,
-                        name=t
-                    )
+                    TechUsed.objects.create(project=project_obj, name=t)
 
             return redirect('home')
 
@@ -140,6 +85,63 @@ def add_project(request):
     return render(request, 'portfolio_app/add_project.html', {
         'project_form': project_form,
     })
+
+
+# def add_project(request):
+#     if request.method == "POST":
+#         project_form = ProjectForm(request.POST, request.FILES)
+
+#         if project_form.is_valid():
+#             project_obj = project_form.save()
+
+#             images = request.FILES.getlist('project_profile')
+
+#             print("PROJECT IMAGES RECEIVED:", len(images))
+#             print("FILES:", request.FILES)
+
+#             for img in images:
+#                 print("UPLOADING IMAGE:", img.name)
+
+#                 ProjectImage.objects.create(
+#                     project=project_obj,
+#                     image=img
+#                 )
+
+#             features = request.POST.getlist('feature_text')
+#             for f in features:
+#                 if f.strip():
+#                     Feature.objects.create(
+#                         project=project_obj,
+#                         text=f
+#                     )
+
+#             tech_names = request.POST.getlist('tech_name')
+#             tech_icons = request.FILES.getlist('tech_icon')
+
+#             for name, icon in zip(tech_names, tech_icons):
+#                 if name.strip():
+#                     TechIcon.objects.create(
+#                         project=project_obj,
+#                         tech_name=name,
+#                         icon=icon
+#                     )
+
+#             tech_used_list = request.POST.getlist('tech_used')
+#             for t in tech_used_list:
+#                 if t.strip():
+#                     TechUsed.objects.create(
+#                         project=project_obj,
+#                         name=t
+#                     )
+
+#             return redirect('home')
+
+#     else:
+#         project_form = ProjectForm()
+
+#     return render(request, 'portfolio_app/add_project.html', {
+#         'project_form': project_form,
+#     })
 
 
 def add_skill(request):
