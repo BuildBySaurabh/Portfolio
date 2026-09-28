@@ -247,31 +247,7 @@
 {% endfor %}
 
 
-<!-- 
-<h2>Skills ({{ skills|length }})</h2>
 
-<div class="card-grid" style="display: flex; flex-wrap: wrap; gap: 10px;">
-{% for s in skills %}
-<section class="card small-card">
-    <div class="card-header">
-        <img src="{{ s.icon.url }}" alt="">
-        <h4>{{ s.name }}</h4>
-        <div>
-            <a href="{% url 'update_skill' s.id %}" class="btn btn-edit">Edit</a>
-            <a href="{% url 'delete_skill' s.id %}" class="btn btn-danger"
-               onclick="return confirm('Delete this skill?')">
-               Delete
-            </a>
-        </div>
-    </div>
-
-    {% if s.image %}
-        <img src="{{ s.image.url }}" class="icon">
-    {% endif %}
-</section>
-{% endfor %}
-</div>
- -->
 
     <h2>Resume</h2>
 
