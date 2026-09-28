@@ -226,7 +226,11 @@
     <div class="skill-grid">
       {% for s in frontend %}
       <div class="skill-card">
-        <img src="{{ s.icon.url|default:'static/default-icons/default.png' }}" alt="{{ s.name }}">
+        {% if s.icon %}
+          <img src="{{ s.icon.url }}" alt="{{ s.name }}">
+      {% else %}
+          <img src="{% static 'portfolio_app/images/default.png' %}" alt="{{ s.name }}">
+      {% endif %}
         <span class="popup-text"><p>{{ s.name }}</p></span>
       </div>
       {% endfor %}
