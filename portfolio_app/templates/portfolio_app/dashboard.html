@@ -130,39 +130,63 @@
         {% endif %}
     </section>
 
-    <!-- Projects -->
-    <h2>Projects ({{ projects|length }})</h2>
-    {% for p in projects %}
-        <section class="card">
-            <div class="card-header">
-                <h3>{{ p.project_title }}</h3>
-                <div>
-                    <a href="{% url 'update_project' p.id %}" class="btn btn-edit">Edit</a>
-                    <a href="{% url 'delete_project' p.id %}" class="btn btn-danger">Delete</a>
-                </div>
-            </div>
+   <!-- Profile -->
+<section class="card">
+    <h2>Profile</h2>
 
-            {% if p.project_video %}
-                <video class="media" controls src="{{ p.project_video.url }}"></video>
-            {% elif p.images.first %}
-                <img class="media" src="{{ p.images.first.image.url }}">
-            {% endif %}
+    {% if pro %}
+        {% if pro.profile_image %}
+            <img src="{{ pro.profile_image.url }}" class="profile-img">
+        {% endif %}
 
-            <p class="text-muted">{{ p.project_des }}</p>
-
-            <div class="icon-row">
-{% if pro %}
-    {% if pro.profile_image %}
-        <img src="{{ pro.profile_image.url }}" class="profile-img">
+        <a href="{% url 'profile_update' pro.id %}" class="btn btn-edit">
+            Update
+        </a>
+    {% else %}
+        <a href="{% url 'profile' %}" class="btn btn-danger">
+            Add Profile
+        </a>
     {% endif %}
+</section>
 
-    <a href="{% url 'profile_update' pro.id %}" class="btn btn-edit">Update</a>
-{% else %}
-    <a href="{% url 'profile' %}" class="btn btn-danger">Add Profile</a>
-{% endif %
+<!-- Projects -->
+<h2>Projects ({{ projects|length }})</h2>
+
+{% for p in projects %}
+    <section class="card">
+        <div class="card-header">
+            <h3>{{ p.project_title }}</h3>
+
+            <div>
+                <a href="{% url 'update_project' p.id %}" class="btn btn-edit">
+                    Edit
+                </a>
+
+                <a href="{% url 'delete_project' p.id %}" class="btn btn-danger">
+                    Delete
+                </a>
             </div>
-        </section>
-    {% endfor %}
+        </div>
+
+        {% if p.project_video %}
+            <video class="media" controls src="{{ p.project_video.url }}"></video>
+        {% elif p.images.first %}
+            <img class="media" src="{{ p.images.first.image.url }}">
+        {% endif %}
+
+        <p class="text-muted">{{ p.project_des }}</p>
+
+        <div class="icon-row">
+            {% for ic in p.icons.all %}
+                {% if ic.icon %}
+                    <img src="{{ ic.icon.url }}"
+                         class="icon"
+                         alt="{{ ic.tech_name }}">
+                {% endif %}
+            {% endfor %}
+        </div>
+    </section>
+{% endfor %}
 
  
 <h2>Skills ({{ skills|length }})</h2>
