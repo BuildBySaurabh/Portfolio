@@ -151,9 +151,15 @@
             <p class="text-muted">{{ p.project_des }}</p>
 
             <div class="icon-row">
-                {% for ic in p.icons.all %}
-                    <img src="{{ ic.icon.url }}" class="icon">
-                {% endfor %}
+{% if pro %}
+    {% if pro.profile_image %}
+        <img src="{{ pro.profile_image.url }}" class="profile-img">
+    {% endif %}
+
+    <a href="{% url 'profile_update' pro.id %}" class="btn btn-edit">Update</a>
+{% else %}
+    <a href="{% url 'profile' %}" class="btn btn-danger">Add Profile</a>
+{% endif %
             </div>
         </section>
     {% endfor %}
@@ -179,10 +185,6 @@
             </a>
         </div>
     </div>
-
-    {% if s.image %}
-        <img src="{{ s.image.url }}" class="icon">
-    {% endif %}
 </section>
 {% endfor %}
 </div>
@@ -200,7 +202,6 @@
     </div>
 <a href="{% url 'resume' %}" class="btn">Add Resume</a>
         View Resume
-    </a>
 </section>
 {% endif %}
 
