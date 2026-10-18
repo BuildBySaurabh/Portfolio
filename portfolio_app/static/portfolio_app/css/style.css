@@ -905,7 +905,7 @@ html,body{
 }
 
 .exp-des {
-    max-height: 140px;
+    max-height: 200px;
     overflow-y: auto;
     padding-right: 5px;
 }
