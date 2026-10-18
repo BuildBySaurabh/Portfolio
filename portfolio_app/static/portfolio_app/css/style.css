@@ -892,7 +892,7 @@ html,body{
 }
 
 .exp-card {
-  min-width: 280px;
+  min-width: 100%;
   max-width: 280px;
   flex-shrink: 0;
     background: rgba(255,255,255,0.08);
